@@ -1,0 +1,10 @@
+﻿  Kaynak.cpp
+C:\Users\Kadir Yakut\source\repos\soru1\Kaynak.cpp(7,13): error C2065: 'MAX_SIZE': bildirimi yapılmamış tanımlayıcı
+C:\Users\Kadir Yakut\source\repos\soru1\Kaynak.cpp(8,14): error C2065: 'MAX_SIZE': bildirimi yapılmamış tanımlayıcı
+C:\Users\Kadir Yakut\source\repos\soru1\Kaynak.cpp(18,17): error C3863: 'int [0]' dizi türü atanabilir değil
+C:\Users\Kadir Yakut\source\repos\soru1\Kaynak.cpp(29,25): error C3863: 'int [0]' dizi türü atanabilir değil
+C:\Users\Kadir Yakut\source\repos\soru1\Kaynak.cpp(34,21): error C3863: 'int [0]' dizi türü atanabilir değil
+C:\Users\Kadir Yakut\source\repos\soru1\Kaynak.cpp(43,20): warning C4477: 'printf' : '%d' biçim dizesi 'int' türü bir bağımsız değişken gerektirir, ancak 1 değişen sayıda bağımsız değişkenin türü 'int [0]'
+C:\Users\Kadir Yakut\source\repos\soru1\Kaynak.cpp(43,20): warning C4313: 'printf': biçim dizesindeki '%d', 1 bağımsız değişkeniyle (türü 'int [0]') çakışıyor
+C:\Users\Kadir Yakut\source\repos\soru1\Kaynak.cpp(43,20): warning C4477: 'printf' : '%d' biçim dizesi 'int' türü bir bağımsız değişken gerektirir, ancak 2 değişen sayıda bağımsız değişkenin türü 'int [0]'
+C:\Users\Kadir Yakut\source\repos\soru1\Kaynak.cpp(43,20): warning C4313: 'printf': biçim dizesindeki '%d', 2 bağımsız değişkeniyle (türü 'int [0]') çakışıyor
