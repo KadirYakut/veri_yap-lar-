@@ -1,71 +1,78 @@
-#include stdio.h
-#include stdlib.h
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define MAX_SIZE 100
 
-typedef struct {
-    char data[MAX_SIZE];
-    int front, rear;
-} Queue;
+struct Queue {
+    char items[MAX_SIZE];
+    int front;
+    int rear;
+};
 
-Queue createQueue() {
-    Queue q = (Queue)malloc(sizeof(Queue));
-    q - front = q - rear = -1;
+struct Queue* createQueue() {
+    struct Queue* q = (struct Queue*)malloc(sizeof(struct Queue));
+    q->front = -1;
+    q->rear = -1;
     return q;
 }
 
-int isFull(Queue q) {
-    return (q - rear == MAX_SIZE - 1);
+int isEmpty(struct Queue* q) {
+    if (q->rear == -1)
+        return 1;
+    else
+        return 0;
 }
 
-int isEmpty(Queue q) {
-    return (q - front == -1  q - front  q - rear);
-}
-
-void enqueue(Queue q, char item) {
-    if (isFull(q)) {
-        printf(Queue is full.n);
-        return;
+void enqueue(struct Queue* q, char value) {
+    if (q->rear == MAX_SIZE - 1)
+        printf("Queue is full\n");
+    else {
+        if (q->front == -1)
+            q->front = 0;
+        q->rear++;
+        q->items[q->rear] = value;
     }
-    q - data[++q - rear] = item;
-    if (q - front == -1) q - front = 0;
 }
 
-char dequeue(Queue q) {
+char dequeue(struct Queue* q) {
+    char item;
     if (isEmpty(q)) {
-        printf(Queue is empty.n);
-        return '0';
+        printf("Queue is empty\n");
+        item = '\0';
     }
-    char item = q - data[q - front++];
-    if (q - front  q - rear) q - front = q - rear = -1;
+    else {
+        item = q->items[q->front];
+        q->front++;
+        if (q->front > q->rear) {
+            q->front = q->rear = -1;
+        }
+    }
     return item;
 }
 
-void removeDuplicates(Queue q) {
-    if (isEmpty(q)) return;
-    char prev = '0';
-    while (!isEmpty(q)) {
-        char current = dequeue(q);
-        if (current != prev) {
-            prev = current;
-            enqueue(q, current);
-        }
-    }
-}
-
 int main() {
-    Queue q = createQueue();
+    struct Queue* q = createQueue();
     char str[MAX_SIZE];
-    printf(Enter a string);
-    scanf(% s, str);
-    for (int i = 0; str[i] != '0'; i++) {
-        enqueue(q, str[i]);
+    printf("String girin: ");
+    fgets(str, MAX_SIZE, stdin);
+    int length = strlen(str);
+    if (str[length - 1] == '\n')
+        str[length - 1] = '\0';
+    int i, j;
+    for (i = 0; i < length; i++) {
+        if (isEmpty(q) || str[i] != q->items[q->rear])
+            enqueue(q, str[i]);
+        else
+            dequeue(q);
     }
-    removeDuplicates(q);
-    printf(Result);
-    while (!isEmpty(q)) {
-        printf(% c, dequeue(q));
+    printf("Sonuç: ");
+    if (isEmpty(q))
+        printf("Empty\n");
+    else {
+        for (j = q->front; j <= q->rear; j++)
+            printf("%c", q->items[j]);
+        printf("\n");
     }
-    printf(n);
     return 0;
 }
